@@ -10,9 +10,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
-  steps:
-
     test:
       runs-on: ubuntu-latest
       steps:
