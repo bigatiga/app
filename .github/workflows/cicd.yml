@@ -8,14 +8,13 @@ on:
     branches: [main]
 
 jobs:
-  build:
-    test:
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v4
-        - uses: actions/setup-node@v4
-          with:
-            node-version: '20'
+  build:  
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '20'
 
     - name: Install dependencies
       run: npm install
@@ -28,4 +27,12 @@ jobs:
         eslint: true
         prettier: true
 
+
+deploy:
+  needs: build
+  runs-on ubuntu-latest
+if: github.ref == 'refs/heads/main' 
+steps:
+  - name: Deploy to Server
+    run: echo "Deploying application...
 
